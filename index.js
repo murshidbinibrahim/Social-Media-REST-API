@@ -11,6 +11,7 @@ dotenv.config();
 //routes
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const postRouter = require("./routes/posts");
 
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
@@ -28,6 +29,7 @@ app.use(morgan("common"));
 
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/posts", postRouter);
 
 app.listen(8800, () => {
   console.log("Backend server is running...");
